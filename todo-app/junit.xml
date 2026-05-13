@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="3" failures="0" errors="0" time="0.527">
-  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2026-05-13T06:16:36" time="0.405" tests="3">
-    <testcase classname=" adds a todo item" name=" adds a todo item" time="0.002">
+<testsuites name="jest tests" tests="3" failures="0" errors="0" time="0.484">
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2026-05-13T06:48:06" time="0.318" tests="3">
+    <testcase classname=" adds a todo item" name=" adds a todo item" time="0.003">
     </testcase>
     <testcase classname=" removes a todo item" name=" removes a todo item" time="0.001">
     </testcase>
-    <testcase classname=" empty list has 0 items" name=" empty list has 0 items" time="0">
+    <testcase classname=" empty list has 0 items" name=" empty list has 0 items" time="0.001">
     </testcase>
   </testsuite>
 </testsuites>
