@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        nodejs 'NodeJS'  // Must match the name you set in Jenkins Tools
+        nodejs 'NodeJS'   // Must match the NodeJS name in Jenkins tools
     }
 
     stages {
@@ -19,25 +19,25 @@ pipeline {
         // Stage 2: Install npm packages
         stage('Install Dependencies') {
             steps {
-                sh 'npm install'
+                bat 'npm install'
             }
         }
 
         // Stage 3: Build the app
         stage('Build') {
             steps {
-                sh 'npm run build'
+                bat 'npm run build'
             }
         }
 
         // Stage 4: Run unit tests
         stage('Test') {
             steps {
-                sh 'npm test'
+                bat 'npm test'
             }
             post {
                 always {
-                    // Publish JUnit test results to Jenkins
+                    // Publish test results
                     junit 'junit.xml'
                 }
             }
