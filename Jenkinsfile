@@ -1,45 +1,28 @@
 pipeline {
     agent any
 
-    tools {
-        nodejs 'NodeJS'
-    }
-
     stages {
-
-        stage('Checkout') {
-            steps {
-                git branch: 'main',
-                    credentialsId: 'github-credentials',
-                    url: 'https://github.com/Yoezer14/SonamSangayYoezer_2240366_DSO101_A2.git'
-            }
-        }
 
         stage('Install Dependencies') {
             steps {
-                bat 'npm install'
+                dir('todo-app') {
+                    bat 'npm install'
+                }
             }
         }
 
         stage('Test') {
             steps {
-                bat 'npm test'
-            }
-            post {
-                always {
-                    junit 'junit.xml'
+                dir('todo-app') {
+                    bat 'npm test'
                 }
             }
         }
-
     }
 
     post {
-        success {
-            echo 'Pipeline completed successfully!'
-        }
-        failure {
-            echo 'Pipeline failed. Check the logs above.'
+        always {
+            junit 'todo-app/reports/junit.xml'
         }
     }
 }
