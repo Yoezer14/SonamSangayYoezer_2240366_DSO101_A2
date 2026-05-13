@@ -2,17 +2,16 @@
   "name": "todo-app",
   "version": "1.0.0",
   "scripts": {
-    "start": "node index.js",
-    "build": "echo Build complete",
+    "start": "node server.js",
     "test": "jest --ci --reporters=default --reporters=jest-junit"
   },
   "jest": {
     "testEnvironment": "node"
   },
   "jest-junit": {
-    "outputDirectory": ".",
-    "outputName": "junit.xml"
-  },
+  "outputDirectory": "./reports",
+  "outputName": "junit.xml"
+},
   "devDependencies": {
     "jest": "^30.4.2",
     "jest-junit": "^17.0.0"
