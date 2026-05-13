@@ -2,11 +2,12 @@ pipeline {
     agent any
 
     tools {
-        nodejs 'NodeJS'
+        nodejs 'NodeJS'  // Must match the name you set in Jenkins Tools
     }
 
     stages {
 
+        // Stage 1: Get the code from GitHub
         stage('Checkout') {
             steps {
                 git branch: 'main',
@@ -15,28 +16,33 @@ pipeline {
             }
         }
 
+        // Stage 2: Install npm packages
         stage('Install Dependencies') {
             steps {
-                bat 'npm install'
+                sh 'npm install'
             }
         }
 
+        // Stage 3: Build the app
         stage('Build') {
             steps {
-                bat 'npm run build'
+                sh 'npm run build'
             }
         }
 
+        // Stage 4: Run unit tests
         stage('Test') {
             steps {
-                bat 'npm test'
+                sh 'npm test'
             }
             post {
                 always {
+                    // Publish JUnit test results to Jenkins
                     junit 'junit.xml'
                 }
             }
         }
+
     }
 
     post {
@@ -44,7 +50,7 @@ pipeline {
             echo 'Pipeline completed successfully!'
         }
         failure {
-            echo 'Pipeline failed.'
+            echo 'Pipeline failed. Check the logs above.'
         }
     }
 }
